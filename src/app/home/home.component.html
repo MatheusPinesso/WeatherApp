@@ -1,0 +1,56 @@
+<Image id="imagemFundo" src="" stretch="fill" ></Image>
+<ActionBar style="color: rgba(0, 0, 0, 0); " columns="*,*">
+    <Label col='0' text="Clima no Tempo" style="color: rgba(0, 0, 0, 0.747); font-size: 17;"></Label>
+
+</ActionBar>
+
+
+
+<GridLayout class="tudo" rows="auto, *, auto">
+    
+    <StackLayout class="header" row="0">
+        <Label text="{{previsaoTempo?.results.city}}" style="color: black; margin-left: 3;"></Label>
+    </StackLayout>
+
+    <GridLayout row="1" rows="*,auto">
+
+        <GridLayout class="coisasdomeio" row="0" rows="auto,auto,auto" columns="*">
+            <Label class="previsao-title" row="0" col="0" colSpan="3" text="{{previsaoTempo?.results.description}}" style="color: black; margin-left: 5;"></Label>
+
+            <StackLayout row="0" col="0" style="margin-top: 50;">
+                <Label text="Temperatura Atual" class="titulo-meio" style="color: black; margin-top:10; font-size: 20;  "></Label>
+                <Label class="previsao-info" col="0" text="{{previsaoTempo?.results.temp}}ºC" style="color: rgba(0, 0, 0, 0.781);font-size: 40; margin-top:5;"></Label>
+            </StackLayout>
+
+            <StackLayout row="1" col="0">
+                <Label text="Humidade do Ar" class="titulo-meio" style="color: black; margin-top:40;"></Label>
+                <Label class="previsao-info" col="1" text="{{previsaoTempo?.results.humidity}}%" style="color: black; margin-top:5;"></Label>
+            </StackLayout>
+
+            <StackLayout row="2" col="0" >
+                <Label text="Velocidade do Vento" class="titulo-meio" style="color: black; margin-top:30; "></Label>
+                <Label class="previsao-info" col="2" text="{{previsaoTempo?.results.wind_speedy}}" style="color: black; margin-top:5;"></Label>
+            </StackLayout>
+        </GridLayout>
+
+        <StackLayout row="1">
+            <Label text='Previsão para os próximos dias' class="titulo-footer" style="color: black;"></Label>
+            <ScrollView orientation="horizontal">
+                <StackLayout orientation="horizontal">
+                    <StackLayout class="card-proximo-dia" *ngFor="let previsao of previsaoTempo?.results.forecast" >
+                        <Label text="Dia: {{previsao.date}}" style="color: black;"></Label>
+                        <Label text="Min: {{previsao.min}}" style="color: rgba(5, 5, 5, 0.466);"></Label>
+                        <Label text="Max: {{previsao.max}}" style="color: rgba(0, 0, 0, 0.658);"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+            
+    </GridLayout>
+
+
+    <StackLayout class="footer" row="2">
+        <Label text="By Pinesso" style="text-align: center; color: black; font-weight: 400; font-size: 15;" ></Label>
+    </StackLayout>
+    
+</GridLayout>
